@@ -37,3 +37,6 @@ Route::post('connecte', 'UtilisateurController@postConnecterUtilisateur');
 Route::get('deconnecte', 'UtilisateurController@deconnexion');
 Route::get('inscription','UtilisateurController@ajoutUtilisateur');
 Route::post('postAjoutUtilisateur', 'UtilisateurController@postAjoutUtilisateur');
+
+//Clients
+Route::get('compteClient', 'ClientController@getCommandesClient');

@@ -4,6 +4,7 @@ namespace App\Modeles;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 use App\Metier\Commande;
+use App\Modeles\ClientDAO;
 
 class CommandeDAO extends Model
 {
@@ -12,15 +13,35 @@ class CommandeDAO extends Model
         $Commandes = DB::table('commandes')->get();
         $lesCommandes = array();
         $i=0;
-        foreach ($Commandes as $lCommande) {
+        foreach ($Commandes as $laCommande) {
             $idComm = $i;
             $i++;
-            $lesCommandes[$idComm] = $this->creerCommande($lCommande);
+            $lesCommandes[$idComm] = $this->creerCommande($laCommande);
         }
         return $lesCommandes;
     }
 
-    private function creerCommande(\stdClass $unCommande)
+    public function getCommandesClient(){
+        $clientDAO = new ClientDAO();
+        $leClient = $clientDAO->getLeClient();
+
+        $commandes = DB::table('commandes')->join('clientel', 'clientel.NO_CLIENT', '=', 'commandes.NO_CLIENT')
+            ->where('clientel.NO_CLIENT', '=', $leClient->getNOCLIENT())->get();
+
+        $detailDAO= new DetailsDAO();
+        $lesCommandes = array();
+        $lesDetails = array();
+        $i=0;
+        foreach ($commandes as $laCommande) {
+            $idComm = $i;
+            $i++;
+            $lesCommandes[$idComm] = $this->creerCommande($laCommande);
+            $lesDetails[$idComm] = $detailDAO->getLesDetails($lesCommandes[$idComm]->getIdComm());
+        }
+        return $lesCommandes;
+    }
+
+    public function creerCommande(\stdClass $unCommande)
     {
         $laCommande = new Commande();
         $laCommande->setIdComm($unCommande->NO_COMMAND);
@@ -38,13 +59,6 @@ class CommandeDAO extends Model
         $maCommande = DB::table('commandes')->where('NO_COMMAND', '=', $idComm)->first();
         $Commande = $this->creerCommande($maCommande);
         return $Commande;
-    }
-
-    public function creationCommande(Commande $unCommande){
-        DB::table('Commandes')->insert(['NO_Commande'=>$unCommande->getIdCommande(),
-            'LIB_Commande'=>$unCommande->getLibCommande(),'QTE_DISPO'=>$unCommande->getQte(),
-            'VILLE_ART'=>$unCommande->getVille(),'PRIX_ART'=>$unCommande->getQte(),
-            'INTEROMPU'=>$unCommande->getInt()]);
     }
 
     public function creationCommandeBase(Commande $maCommande){

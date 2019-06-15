@@ -7,13 +7,13 @@
 @if(Session::has('CurrentUtil'))
     @section('contenu')<table class="table table-bordered table-stripped">
         <thead>
-        <th>Id</th>
-        <th>Numéro Vendeur</th>
-        <th>Numéro Client</th>
-        <th>Date</th>
-        <th>Facture</th>
-        <th>Détails</th>
-        <th>Supprimer</th>
+            <th>Id</th>
+            <th>Numéro Vendeur</th>
+            <th>Numéro Client</th>
+            <th>Date</th>
+            <th>Facture</th>
+            <th>Détails</th>
+            <th>Supprimer</th>
         </thead>
         @foreach ($lescommandes as $commande)
             <tr>

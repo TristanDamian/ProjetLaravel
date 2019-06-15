@@ -10,7 +10,7 @@
     @endsection
 
     @section('contenu')
-        <h2>Commande numéro: {{$laCommande->getIdComm()}}</h2>
+        <h3>Commande numéro: {{$laCommande->getIdComm()}}</h3>
         <p>{{$laCommande->getDate()}}</p>
         @if($lesDetails)
             <table class="table table-bordered table-stripped">

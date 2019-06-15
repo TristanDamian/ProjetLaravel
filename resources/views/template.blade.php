@@ -65,7 +65,7 @@
                         </li>
                         @if(session('roleUtil') == 'lecture')
                         <li class="nav-item">
-                            <a class="nav-link" href="/Compte">Compte Client</a>
+                            <a class="nav-link" href="{!! url('/compteClient') !!}">Compte Client</a>
                         </li>
                         @endif
                     @endif

@@ -15,6 +15,12 @@ class CommandeController extends Controller
         return view('listeCommandes',compact('lescommandes'));
     }
 
+    public function getCommandesClient(){
+        $commandeDAO = new CommandeDAO();
+        $lesCommandes = $commandeDAO->getCommandesClient();
+        return view('compteClient',compact('lesCommandes','leClient'));
+    }
+
     public function getCommandeDetails($id){
         $commande = new CommandeDAO();
         $Detail= new DetailsDAO();
