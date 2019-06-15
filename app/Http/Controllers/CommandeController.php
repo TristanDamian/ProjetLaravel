@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Modeles\CommandeDAO;
-
+use App\Http\Requests\InsertionCommandeRequest;
+use App\Metier\Commande;
 use App\Modeles\DetailsDAO;
 use Illuminate\Http\Request;
 
@@ -14,32 +15,36 @@ class CommandeController extends Controller
         return view('listeCommandes',compact('lescommandes'));
     }
 
-    //Selection d'une conference par son id
-    public function getConferenceById($idArt)
-    {
-        $conference = new commandeDAO();
-        $laConference = $conference->getcommandeById($idArt);
-        return view('listerCommentaires',compact('laConference','lesCommentaires'));
-    }
-
     public function getCommandeDetails($id){
         $commande = new CommandeDAO();
         $Detail= new DetailsDAO();
         $laCommande = $commande->getCommandeById($id);
         $lesDetails = $Detail->getLesDetails($id);
-        //pour simplifier l'accès aux données dans la vue "ListerCommentaire', on passe deux objets
-        //laConference représente la conférence qui a été sélectionnée
-        //lesCommentaires représente la liste des commentaires associés à cette conférence
         return view('CommandeDetails',compact('laCommande','lesDetails'));
     }
 
-    public function NewCommande(){
-        $commande=new CommandeDAO();
-        $commande->CreationCommandeBase();
+    public function creationCommande(){
+        return view('creationCommande');
+    }
+
+    public function postCreationCommande(InsertionCommandeRequest $request)
+    {
+        $commande=new Commande();
+        $commande->setIdComm('000001');
+        $commande->setNoVendeur($request->input('NO_VENDEUR'));
+        $commande->setNoClient($request->input('NO_CLIENT'));
+        $commande->setDate(date('Y-m-d'));
+        $commande->setFacture('F');
+        $commandeDAO = new CommandeDAO();
+        $commandeDAO->creationCommandeBase($commande);
         return view('NewCommande');
     }
 
-    public function ajoutCommande(){
-        return view('formAjoutAricle');
+    public function supprimerCommande($id)
+    {
+        $commandeDAO=new CommandeDAO();
+        $commandeDAO->supprimerCommandeBase($id);
+        return view('suppressionCommande');
     }
+
 }

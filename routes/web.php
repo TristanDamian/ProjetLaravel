@@ -10,18 +10,30 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Accueil
+Route::get('/', function () { return view('welcome'); });
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('Articles','ArticleController@getArticles');
+//Commandes côté admin
 Route::get('Commandes','CommandeController@getCommandes');
+Route::get('Commandes/{id}/Details','CommandeController@getCommandeDetails');
+Route::get('Commandes/{id}/Supprimer', 'CommandeController@supprimerCommande');
+Route::get('creerCommande','CommandeController@creationCommande');
+Route::post('saisieCommande', 'CommandeController@postCreationCommande');
+//Côté client
+Route::get('MesCommandes/{id}','CommandeController@getCommandeClient');
+
+//Articles
+Route::get('Articles','ArticleController@getArticles');
+//Ajout d'un article par un admin
 Route::get('ajoutArticle','ArticleController@ajoutArticle');
 Route::post('saisieArticle','ArticleController@postAjoutArticle');
-Route::post('AjoutReussi','DetailController@newDetail');
+//Ajout dans le panier du client
 Route::get('Article/{id}','ArticleController@addToCart');
-Route::get('NewCommande','CommandeController@NewCommande');
-Route::get('Commandes','CommandeController@getCommandes');
-Route::get('Commandes/{id}','CommandeController@getCommandeDetails');
-Route::get('MesCommandes/{id}','CommandeController@getCommandeClient');
+Route::post('AjoutReussi','DetailController@newDetail');
+
+//Utilisateurs
+Route::get('Connexion', 'UtilisateurController@connexion');
+Route::post('connecte', 'UtilisateurController@postConnecterUtilisateur');
+Route::get('deconnecte', 'UtilisateurController@deconnexion');
+Route::get('inscription','UtilisateurController@ajoutUtilisateur');
+Route::post('postAjoutUtilisateur', 'UtilisateurController@postAjoutUtilisateur');
