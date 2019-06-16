@@ -21,6 +21,7 @@ Route::get('creerCommande','CommandeController@creationCommande');
 Route::post('saisieCommande', 'CommandeController@postCreationCommande');
 //Côté client
 Route::get('MesCommandes/{id}','CommandeController@getCommandeClient');
+Route::get('modifierCommande/{id}', 'ArticleController@modifierCommande');
 
 //Articles
 Route::get('Articles','ArticleController@getArticles');
@@ -29,6 +30,7 @@ Route::get('ajoutArticle','ArticleController@ajoutArticle');
 Route::post('saisieArticle','ArticleController@postAjoutArticle');
 //Ajout dans le panier du client
 Route::get('Article/{id}','ArticleController@addToCart');
+Route::get('modifierCommande/Article/{id}','ArticleController@addToCart');
 Route::post('AjoutReussi','DetailController@newDetail');
 
 //Utilisateurs

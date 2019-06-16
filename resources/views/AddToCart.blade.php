@@ -10,20 +10,20 @@
     @endsection
 
     @section('contenu')
-        <h2>Commande numéro: </h2>
+        <h3>Commande numéro: </h3>
+        {!! Form::open(['action'=>'DetailController@newDetail',$article->getIdArticle()]) !!}
         @if(Session::has('CurrentCommande'))
             {{session('CurrentCommande')}}
         @else
-            {!! Form::open(['action'=>'DetailController@newDetail',$article->getIdArticle()]) !!}
             {!! Form::label('Entrez le numéro de commande') !!}
             {!! Form::text('NO_COMMAND', null) !!}
-            <h2>Article : {{$article->getLibArticle()}}</h2>
-            {!! Form::label('Sélectionner la quantité que vous souhaitez commander:') !!}
-            {!! Form::number('Qte',0) !!}
-            {!! Form::hidden('id',$article->getIdArticle()) !!}
-            {!!  Form::submit('Valider') !!}
-            {!! Form::close() !!}
         @endif
+        <h3>Article : {{$article->getLibArticle()}}</h3>
+        {!! Form::label('Sélectionner la quantité que vous souhaitez commander:') !!}
+        {!! Form::number('Qte',0) !!}
+        {!! Form::hidden('id',$article->getIdArticle()) !!}
+        {!!  Form::submit('Valider') !!}
+        {!! Form::close() !!}
         <p><a href="{{url('/deconnecte')}}">Se déconnecter</a></p>
     @endsection
 @else

@@ -14,12 +14,11 @@ class ArticleController extends Controller
         return view('listeArticles',compact('lesArticles'));
     }
 
-    //Selection d'une conference par son id
-    public function getConferenceById($idArt)
-    {
-        $conference = new ArticleDAO();
-        $laConference = $conference->getArticleById($idArt);
-        return view('listerCommentaires',compact('laConference','lesCommentaires'));
+    public function modifierCommande($id){
+        $article = new ArticleDAO();
+        $lesArticles = $article->getLesArticles();
+        session(['CurrentCommande'=> $id]);
+        return view('listeArticles',compact('lesArticles'));
     }
 
     public function ajoutArticle(){

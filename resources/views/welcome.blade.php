@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Deco&Design</title>
+        <icon></icon>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -70,8 +71,7 @@
                 <div class="title m-b-md">
                     Déco & Design
                 </div>
-
-                <p><img src="logo.png" alt="logo"/></p>
+                <img src="{{ url('resources/images/logo.png') }}" alt="logo">
 
                 <div class="links">
                     <a href="{{url('/Connexion')}}">Connexion</a>
