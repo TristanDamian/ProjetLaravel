@@ -62,6 +62,9 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            img{
+                width: 500px;
+            }
         </style>
     </head>
     <body>
@@ -71,7 +74,7 @@
                 <div class="title m-b-md">
                     Déco & Design
                 </div>
-                <img src="{{ url('resources/images/logo.png') }}" alt="logo">
+                <img id="logo" src="{{URL::asset('images/image.png')}}">
 
                 <div class="links">
                     <a href="{{url('/Connexion')}}">Connexion</a>
