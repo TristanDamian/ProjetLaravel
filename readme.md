@@ -1,3 +1,14 @@
+<h1>accès admin</h1>
+<h2> Nom:  Merlot</h2>
+<h2>Prénom: Pierre</h2>
+<h2> mot de passe : 5ebe2294ecd0e0f08eab7690d2a6ee69 </h2>
+
+<h1>accès simple</h1>
+<h2> Nom:  MLalande</h2>
+<h2>Prénom: Paul</h2>
+<h2> mot de passe : 5ebe2294ecd0e0f08eab7690d2a6ee69 </h2>
+
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
