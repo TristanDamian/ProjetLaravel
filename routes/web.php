@@ -12,7 +12,7 @@
 */
 //Accueil
 Route::get('/', function () { return view('welcome'); });
-
+Route::get('welcome','ArticleController@getArticles');
 //Commandes côté admin
 Route::get('Commandes','CommandeController@getCommandes');
 Route::get('Commandes/{id}/Details','CommandeController@getCommandeDetails');

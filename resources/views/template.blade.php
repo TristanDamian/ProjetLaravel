@@ -37,9 +37,9 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="#">
                                 @if (Session::has('CurrentCommande'))
-                                    {{session('CurrentCommande')}}
+                                    <a class="nav-link" href="Commandes/{{session('CurrentCommande')}}/Details">{{session('CurrentCommande')}}</a>
                                 @else
-                                    {{'Pas de commande en cours'}}
+                                    <a class="nav-link" href="creerCommande">{{'Pas de commande en cours'}}</a>
                                 @endif
                                 <span class="sr-only">(current)</span>
                             </a>
