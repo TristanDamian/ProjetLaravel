@@ -26,7 +26,9 @@
                     {!! Form::submit('Valider', ['class' => 'btn btn-info pull-right']) !!}
                     {!! Form::close() !!}
                     <div class="card-body">
-                        <p><a href="{{url('/Commandes')}}">Retour à la liste des commandes</a></p>
+                        @if(session('roleUtil') == 'admin')
+                            <p><a href="{{url('/Commandes')}}">Retour à la liste des commandes</a></p>
+                        @endif
                         <p><a href="{{url('/deconnecte')}}">Se déconnecter</a></p>
                     </div>
                 </div>

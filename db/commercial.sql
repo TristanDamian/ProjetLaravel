@@ -4,6 +4,11 @@
 -- ------------------------------------------------------
 -- Server version	10.1.40-MariaDB-0ubuntu0.18.04.1
 
+create database if not exists commercial
+character set utf8 collate utf8_unicode_ci;
+use commercial;
+grant all privileges on commercial.* to 'commercial_user'@'localhost' identified by 'secret';
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -229,3 +234,4 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2019-06-16 16:52:40
+
