@@ -4,7 +4,7 @@
 <h2> mot de passe : 5ebe2294ecd0e0f08eab7690d2a6ee69 </h2>
 
 <h1>accès simple</h1>
-<h2> Nom:  MLalande</h2>
+<h2> Nom:  Lalande</h2>
 <h2>Prénom: Paul</h2>
 <h2> mot de passe : 5ebe2294ecd0e0f08eab7690d2a6ee69 </h2>
 
